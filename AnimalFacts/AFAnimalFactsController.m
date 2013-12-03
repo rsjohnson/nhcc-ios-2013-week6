@@ -9,12 +9,17 @@
 #import "AFAnimalFactsController.h"
 #import "AFAnimalViewController.h"
 #import "AFAnimal.h"
+#import "AFAnimalManager.h"
 
 @interface AFAnimalFactsController ()
+< NSFetchedResultsControllerDelegate >
 
 @end
 
 @implementation AFAnimalFactsController
+{
+    NSFetchedResultsController *_fetchController;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,16 +33,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.animals = [AFAnimal loadAnimals];
-    [self sortAnimals];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(saveSubject:)
-                                                 name:AFAnimalSubjectSaved
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(clearSubject:)
-                                                 name:AFAnimalSubjectCancelled
-                                               object:nil];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"AFAnimal"];
+    request.predicate = [NSPredicate predicateWithValue:YES];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    NSArray *results = [[AFAnimalManager sharedManager].mainContext executeFetchRequest:request error:nil];
+    
+    _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[AFAnimalManager sharedManager].mainContext sectionNameKeyPath:nil cacheName:@"allAnimals"];
+    _fetchController.delegate = self;
+    [_fetchController performFetch:nil];
 }
 
 - (void) removeAnimal:(AFAnimal *) animal {
@@ -52,7 +56,7 @@
 }
 
 - (void) saveAnimals {
-    [AFAnimal saveAnimals:self.animals];
+    //[AFAnimal saveAnimals:self.animals];
 }
 
 - (void) clearSubject:(id) sender {
@@ -72,8 +76,29 @@
 
 - (void) dealloc {
     [self clearSubject:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AFAnimalSubjectSaved object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AFAnimalSubjectCancelled object:nil];
+   /* [[NSNotificationCenter defaultCenter] removeObserver:self name:AFAnimalSubjectSaved object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AFAnimalSubjectCancelled object:nil];*/
+}
+
+#pragma mark - Fetched Results Controller Delegate 
+
+- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
+#pragma mark -
+
+- (void) deleteAnimal:(UILongPressGestureRecognizer*)gr {
+    if (gr.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    UITableViewCell *cell = gr.view;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    AFAnimal *animal = [_fetchController objectAtIndexPath:indexPath];
+    NSManagedObjectContext *context = [AFAnimalManager sharedManager].mainContext;
+    [context deleteObject:animal];
+    [context save:nil];
 }
 
 #pragma mark - Table view data source
@@ -85,7 +110,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.animals count];
+    return [_fetchController.sections[section] numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,8 +118,12 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    AFAnimal * animal = self.animals[indexPath.row];
+    AFAnimal * animal = [_fetchController objectAtIndexPath:indexPath];
     cell.textLabel.text = animal.name;
+    if (cell.gestureRecognizers.count == 0) {
+        UILongPressGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteAnimal:)];
+        [cell addGestureRecognizer:gr];
+    }
     return cell;
 }
 
@@ -127,8 +156,9 @@
         NSIndexPath * indexPath = [self.animalTableView indexPathForCell:cell];
         vc.animal = self.animals[indexPath.row];
     } else {
-        self.subject = [[AFAnimal alloc] init];
-        vc.animal = self.subject;
+        NSManagedObjectContext *ctx = [[AFAnimalManager sharedManager] mainContext];
+        AFAnimal *animal = (id)[NSEntityDescription insertNewObjectForEntityForName:@"AFAnimal" inManagedObjectContext:ctx];
+        vc.animal = animal;
     }
 }
 

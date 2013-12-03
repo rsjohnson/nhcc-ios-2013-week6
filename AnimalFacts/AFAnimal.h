@@ -2,30 +2,19 @@
 //  AFAnimal.h
 //  AnimalFacts
 //
-//  Created by Jacob Good on 10/29/13.
+//  Created by Ryan Johnson on 12/2/13.
 //  Copyright (c) 2013 Jacob Good. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-extern NSString * const AFAnimalSubjectSaved;
-extern NSString * const AFAnimalSubjectCancelled;
 
-extern NSString * const AFAnimalNameKey;
-extern NSString * const AFAnimalSpeciesKey;
-extern NSString * const AFAnimalFactKey;
-extern NSString * const AFAnimalImageKey;
+@interface AFAnimal : NSManagedObject
 
-@interface AFAnimal : NSObject <NSCoding>
-
-@property (nonatomic) NSString *name;
-@property (nonatomic) NSString *species;
-@property (nonatomic) NSString *fact;
-@property (nonatomic) UIImage  *picture;
-
-- (void) savePicture;
-
-+ (NSMutableArray*) loadAnimals;
-+ (void) saveAnimals: (NSMutableArray*) animals;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * species;
+@property (nonatomic, retain) NSString * fact;
+@property (nonatomic, retain) NSData * pictureData;
 
 @end

@@ -26,11 +26,15 @@
 		2313A9C81817278B00D88A22 /* 686px-Harpia_harpyja_-falconry_-head-8a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2313A9C71817278B00D88A22 /* 686px-Harpia_harpyja_-falconry_-head-8a.jpg */; };
 		2338E974181998AA004490CB /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2338E973181998AA004490CB /* NSFileManager+DirectoryLocations.m */; };
 		237E8C1C182A910D00BA65B2 /* AFAnimalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E8C1B182A910D00BA65B2 /* AFAnimalViewController.m */; };
-		23816FF3182066ED00E947B3 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 23816FF2182066ED00E947B3 /* AFAnimal.m */; };
+		23816FF3182066ED00E947B3 /* AFAnimal_deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 23816FF2182066ED00E947B3 /* AFAnimal_deprecated.m */; };
 		2387163418204EC900870F98 /* AnimalFactsStoryiPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2387163318204EC900870F98 /* AnimalFactsStoryiPhone.storyboard */; };
 		23993BAA1819575500A149FD /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23993BA91819575500A149FD /* 179-notepad.png */; };
 		23B33DEE1821419A00264295 /* SoldierFly.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 23B33DED1821419A00264295 /* SoldierFly.jpeg */; };
 		23F4DB1D1829778D00072A28 /* AFAnimalFactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F4DB1C1829778D00072A28 /* AFAnimalFactsController.m */; };
+		94DD6B51184D62DC00E939A1 /* AFAnimalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6B50184D62DC00E939A1 /* AFAnimalManager.m */; };
+		94DD6B53184D63BD00E939A1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DD6B52184D63BD00E939A1 /* CoreData.framework */; };
+		94DD6B56184D642300E939A1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6B54184D642300E939A1 /* Model.xcdatamodeld */; };
+		94DD6B59184D676D00E939A1 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6B58184D676D00E939A1 /* AFAnimal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,13 +73,19 @@
 		2338E973181998AA004490CB /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		237E8C1A182A910D00BA65B2 /* AFAnimalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimalViewController.h; sourceTree = "<group>"; };
 		237E8C1B182A910D00BA65B2 /* AFAnimalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimalViewController.m; sourceTree = "<group>"; };
-		23816FF1182066ED00E947B3 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
-		23816FF2182066ED00E947B3 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
+		23816FF1182066ED00E947B3 /* AFAnimal_deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal_deprecated.h; sourceTree = "<group>"; };
+		23816FF2182066ED00E947B3 /* AFAnimal_deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal_deprecated.m; sourceTree = "<group>"; };
 		2387163318204EC900870F98 /* AnimalFactsStoryiPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimalFactsStoryiPhone.storyboard; sourceTree = "<group>"; };
 		23993BA91819575500A149FD /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		23B33DED1821419A00264295 /* SoldierFly.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SoldierFly.jpeg; sourceTree = "<group>"; };
 		23F4DB1B1829778D00072A28 /* AFAnimalFactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimalFactsController.h; sourceTree = "<group>"; };
 		23F4DB1C1829778D00072A28 /* AFAnimalFactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimalFactsController.m; sourceTree = "<group>"; };
+		94DD6B4F184D62DC00E939A1 /* AFAnimalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimalManager.h; sourceTree = "<group>"; };
+		94DD6B50184D62DC00E939A1 /* AFAnimalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimalManager.m; sourceTree = "<group>"; };
+		94DD6B52184D63BD00E939A1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		94DD6B55184D642300E939A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		94DD6B57184D676D00E939A1 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
+		94DD6B58184D676D00E939A1 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DD6B53184D63BD00E939A1 /* CoreData.framework in Frameworks */,
 				2313A9831817198E00D88A22 /* CoreGraphics.framework in Frameworks */,
 				2313A9851817198E00D88A22 /* UIKit.framework in Frameworks */,
 				2313A9811817198E00D88A22 /* Foundation.framework in Frameworks */,
@@ -124,6 +135,7 @@
 		2313A97F1817198E00D88A22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94DD6B52184D63BD00E939A1 /* CoreData.framework */,
 				2313A9801817198E00D88A22 /* Foundation.framework */,
 				2313A9821817198E00D88A22 /* CoreGraphics.framework */,
 				2313A9841817198E00D88A22 /* UIKit.framework */,
@@ -142,12 +154,17 @@
 				2313A9871817198E00D88A22 /* Supporting Files */,
 				2338E972181998AA004490CB /* NSFileManager+DirectoryLocations.h */,
 				2338E973181998AA004490CB /* NSFileManager+DirectoryLocations.m */,
-				23816FF1182066ED00E947B3 /* AFAnimal.h */,
-				23816FF2182066ED00E947B3 /* AFAnimal.m */,
+				23816FF1182066ED00E947B3 /* AFAnimal_deprecated.h */,
+				23816FF2182066ED00E947B3 /* AFAnimal_deprecated.m */,
 				23F4DB1B1829778D00072A28 /* AFAnimalFactsController.h */,
 				23F4DB1C1829778D00072A28 /* AFAnimalFactsController.m */,
 				237E8C1A182A910D00BA65B2 /* AFAnimalViewController.h */,
 				237E8C1B182A910D00BA65B2 /* AFAnimalViewController.m */,
+				94DD6B4F184D62DC00E939A1 /* AFAnimalManager.h */,
+				94DD6B50184D62DC00E939A1 /* AFAnimalManager.m */,
+				94DD6B54184D642300E939A1 /* Model.xcdatamodeld */,
+				94DD6B57184D676D00E939A1 /* AFAnimal.h */,
+				94DD6B58184D676D00E939A1 /* AFAnimal.m */,
 			);
 			path = AnimalFacts;
 			sourceTree = "<group>";
@@ -301,12 +318,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DD6B59184D676D00E939A1 /* AFAnimal.m in Sources */,
 				2313A98D1817198E00D88A22 /* main.m in Sources */,
 				237E8C1C182A910D00BA65B2 /* AFAnimalViewController.m in Sources */,
 				2313A9911817198E00D88A22 /* AFAppDelegate.m in Sources */,
+				94DD6B56184D642300E939A1 /* Model.xcdatamodeld in Sources */,
 				23F4DB1D1829778D00072A28 /* AFAnimalFactsController.m in Sources */,
 				2338E974181998AA004490CB /* NSFileManager+DirectoryLocations.m in Sources */,
-				23816FF3182066ED00E947B3 /* AFAnimal.m in Sources */,
+				23816FF3182066ED00E947B3 /* AFAnimal_deprecated.m in Sources */,
+				94DD6B51184D62DC00E939A1 /* AFAnimalManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +539,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		94DD6B54184D642300E939A1 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				94DD6B55184D642300E939A1 /* Model.xcdatamodel */,
+			);
+			currentVersion = 94DD6B55184D642300E939A1 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2313A9751817198E00D88A22 /* Project object */;
 }

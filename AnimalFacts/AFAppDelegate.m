@@ -7,11 +7,13 @@
 //
 
 #import "AFAppDelegate.h"
+#import "AFAnimalManager.h"
 
 @implementation AFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AFAnimalManager sharedManager];
     return YES;
 }
 							

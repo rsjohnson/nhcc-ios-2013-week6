@@ -8,6 +8,7 @@
 
 #import "AFAnimalViewController.h"
 #import "AFAnimal.h"
+#import "AFAnimalManager.h"
 
 @import AssetsLibrary;
 
@@ -48,7 +49,7 @@
 - (void) updateFromAnimal {
     self.animalNameLabel.text = self.animal.name;
     self.animalFactTextView.text = self.animal.fact;
-    
+   /*
     if (self.animal.picture != nil) {
         self.animalImageView.image = self.animal.picture;
         [self.photoButton setTitle:@"Change Photo" forState:UIControlStateNormal];
@@ -56,18 +57,19 @@
         [self.animalImageView sizeToFit];
         [self.photoButton setTitle:@"Pick Photo" forState:UIControlStateNormal];
     }
-    
+    */
 }
 
 - (void) saveToAnimal {
     self.animal.name = self.animalNameLabel.text;
     self.animal.fact = self.animalFactTextView.text;
-    self.animal.picture = self.animalImageView.image;
-    [[NSNotificationCenter defaultCenter] postNotificationName:AFAnimalSubjectSaved object:self];
+    [[AFAnimalManager sharedManager].mainContext save:nil];
+   // self.animal.picture = self.animalImageView.image;
+  //  [[NSNotificationCenter defaultCenter] postNotificationName:AFAnimalSubjectSaved object:self];
 }
 
 - (IBAction) cancelButtonPushed:(id) sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:AFAnimalSubjectCancelled object:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:AFAnimalSubjectCancelled object:self];
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
